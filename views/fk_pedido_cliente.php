@@ -1,5 +1,5 @@
 <?php
-require_once '../config/db.php';
+require_once '../config/conexion.php';
 
 if (isset($_POST['accion']) && $_POST['accion'] === 'crear') {
     $stmt = $pdo->prepare("INSERT INTO pedidos (id_cliente, fecha, total) VALUES (?, ?, ?)");
@@ -43,9 +43,10 @@ if (isset($_GET['editar'])) {
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body>
+<body bgcolor="blue" font="black">
+    
     <a href="../index.php">inicio</a>
-    <h2>Gestión de Pedidos</h2>
+    <h2>pedidos</h2>
 
     <form method="POST">
         <input type="hidden" name="accion" value="<?= $pedidoEditar ? 'editar' : 'crear' ?>">
@@ -53,9 +54,10 @@ if (isset($_GET['editar'])) {
             <input type="hidden" name="id_pedido" value="<?= $pedidoEditar['id_pedido'] ?>">
         <?php endif; ?>
 
-        <label>Cliente:</label>
+        <label color="blue">Cliente:</label>
         <select name="id_cliente" required>
             <option value="">clientes</option>
+            
             <?php foreach ($clientes as $c): ?>
                 <option value="<?= $c['id_cliente'] ?>" <?= ($pedidoEditar && $pedidoEditar['id_cliente'] == $c['id_cliente']) ? 'selected' : '' ?>>
                     <?= htmlspecialchars($c['nombre']) ?>

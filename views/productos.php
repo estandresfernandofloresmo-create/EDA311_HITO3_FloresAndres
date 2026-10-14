@@ -1,5 +1,5 @@
 <?php
-require_once '../config/db.php';
+require_once '../config/conexion.php';
 
 if (isset($_POST['accion']) && $_POST['accion'] === 'crear') {
 

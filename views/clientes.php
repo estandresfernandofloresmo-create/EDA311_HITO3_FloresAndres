@@ -8,7 +8,7 @@ if (isset($_POST['accion']) && $_POST['accion'] === 'crear') {
 }
 
 
-if (isset($_POST['accion']) && $_POST['accion'] === 'editar') {
+if (isset($_POST['accion']) && $_POST['accion'] === 'editar') {           //editar
     $stmt = $pdo->prepare("UPDATE clientes SET nombre = ?, email = ?, edad = ? WHERE id_cliente = ?");
     $stmt->execute([$_POST['nombre'], $_POST['email'], $_POST['edad'], $_POST['id_cliente']]);
     header("Location: clientes.php");
@@ -16,7 +16,7 @@ if (isset($_POST['accion']) && $_POST['accion'] === 'editar') {
 }
 
 
-if (isset($_GET['eliminar'])) {
+if (isset($_GET['eliminar'])) {               //eliminar 
     $stmt = $pdo->prepare("DELETE FROM clientes WHERE id_cliente = ?");
     $stmt->execute([$_GET['eliminar']]);
     header("Location: clientes.php");
@@ -41,7 +41,7 @@ if (isset($_GET['editar'])) {
 </head>
 <body>
     <a href="../index.php">regresar</a>
-    <h2>Gestion</h2>
+    <h2>gestion de clientes</h2>
 
   
     <form method="POST">
@@ -68,7 +68,7 @@ if (isset($_GET['editar'])) {
     <hr>
 
    
-    <table border="1" cellpadding="8">
+    <table border="1" cellpadding="8" color="red">
         <thead>
             <tr>
                 <th>ID</th>
